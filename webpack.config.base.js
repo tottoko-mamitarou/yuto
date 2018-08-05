@@ -8,7 +8,7 @@ const path = require('path')
 // base config
 const SRC = './src'
 const DEST = './public'
-const HOST = process.env.HOST || '0.0.0.0'
+const HOST = process.env.HOST || '127.0.0.1'
 const PORT = process.env.PORT || 3000
 
 const constants = readConfig(`${SRC}/constants.yml`)
