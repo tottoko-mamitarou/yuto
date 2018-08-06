@@ -44,6 +44,7 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
 body {
   -webkit-text-size-adjust: 100%;
           text-size-adjust: 100%; }
@@ -60,7 +61,8 @@ body {
   background-image: url("/img/html5.png");
   background-repeat: no-repeat; }
 
-@media (min-width: 800px) {
-  .div {
-    width: 80%;
-    background-color: black; } }
+.timer {
+  width: 80%;
+  background-color: black;
+  color: blue; }
+
