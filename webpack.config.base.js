@@ -1,6 +1,7 @@
 'use strict'
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const routeDataMapper = require('webpack-route-data-mapper')
 const readConfig = require('read-config')
 const path = require('path')
@@ -32,7 +33,7 @@ module.exports = {
     // エントリーファイル
     entry: {
         'js/script.js': `${SRC}/js/script.js`,
-        'css/style.css': `${SRC}/scss/style.scss`,
+        'css/style': `${SRC}/scss/style.scss`,
     },
     // 出力するディレクトリ・ファイル名などの設定
     output: {
@@ -73,23 +74,22 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 2,
-                            }
-                        },
-                        'postcss-loader',
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                includePaths: [ `${SRC}/scss` ],
-                            },
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,
                         }
-                    ]
-                })
+                    },
+                    'postcss-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: [`${SRC}/scss`],
+                        }
+                    }
+                ]
             },
             {
                 test: /.ya?ml$/,
@@ -113,11 +113,12 @@ module.exports = {
             '@': path.join(__dirname, SRC, 'js'),
         }
     },
-
     plugins: [
         // 複数のHTMLファイルを出力する
         ...htmlTemplates,
         // style.cssを出力
-        new ExtractTextPlugin('[name]')
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+        }),
     ],
 }
