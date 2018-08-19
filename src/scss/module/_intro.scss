@@ -1,0 +1,39 @@
+.intro__mein{
+    width:100%;
+    height: 100vh;
+    text-align: center;
+    background-color: aqua;
+}
+.intro__bg--left{
+    float:left;
+    width:50%;
+    height: 100vh;
+    text-align: center;
+    background-color: pink;
+    
+
+}
+.intro__bg--right{
+    float:right;
+    width:50%;
+    height: 100vh;
+    text-align: center;
+    background-color: yellow;
+
+
+}
+.intro__wrapper{
+    width:75%;
+    height: 80vh;
+    margin: 10vh auto;
+
+    text-align: center;
+    background-color: lightgreen;
+}
+.intro__teamname{
+    padding:10%;
+    font-size:3vw;
+}
+.intro__message{
+    font-size:1.5vw;
+}
